@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NumberWizard : MonoBehaviour
 {//varables that are globle to the class
     [SerializeField] int intmax;
     [SerializeField] int intmin;
+    [SerializeField] TextMeshProUGUI guessText;
     int intguess;
+    
+    
     // Start is called before the first frame update
 
   
@@ -16,9 +20,11 @@ public class NumberWizard : MonoBehaviour
     }
     void VoidStartGame()
     {
-        intmax = intmax + 1;
+        intguess = (intmax + intmin) / 2;
 
-        intguess = (intmax = intmin) / 2;
+        guessText.text = intguess.ToString();
+
+        intmax = intmax + 1;
     }
     //Start of game commands
     public void OnPressHigher()
@@ -36,7 +42,8 @@ public class NumberWizard : MonoBehaviour
     
     void VoidNextGuess()
     {
-        intguess = (intmax = intmin) / 2;
+        intguess = (intmax + intmin) / 2;
+        guessText.text = intguess.ToString();
         
     }
     //Equation method for getting closer to number
