@@ -20,29 +20,27 @@ public class NumberWizard : MonoBehaviour
     }
     void VoidStartGame()
     {
-        intguess = (intmax + intmin) / 2;
+        VoidNextGuess();
 
-        guessText.text = intguess.ToString();
-
-        intmax = intmax + 1;
+        
     }
     //Start of game commands
     public void OnPressHigher()
     {
-        intmin = intguess;
+        intmin = intguess + 1;
         VoidNextGuess();
     }
     //Method for when higher is Pressed
     public void OnPressLower()
     {
-        intmax = intguess;
+        intmax = intguess - 1;
         VoidNextGuess();
     }
     //Method for when lower is pressed
     
     void VoidNextGuess()
     {
-        intguess = (intmax + intmin) / 2;
+        intguess = Random.Range(intmin, intmax + 1);
         guessText.text = intguess.ToString();
         
     }
